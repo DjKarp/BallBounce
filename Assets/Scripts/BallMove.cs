@@ -4,7 +4,10 @@ using UnityEngine;
 
 /// <summary>
 /// Скрипт управления движением шарика.
-/// После старта мышкой выбираем куда лететь шарику. Также мышкой можно в любое время задать новую траекторию для движения.
+/// 
+/// Справедливо для первого коммита на гит хабе - После старта мышкой выбираем куда лететь шарику. Также мышкой можно в любое время задать новую траекторию для движения.
+/// 
+/// Для крайнего коммита - шарики автоматически стартуют из центра в рандомную сторону. 
 /// </summary>
 public class BallMove : MonoBehaviour
 {
@@ -24,7 +27,7 @@ public class BallMove : MonoBehaviour
 
     private LineRenderer[] m_LineRenderer;
 
-
+    private Vector2 tempPoint;
 
 
     private void Awake()
@@ -35,6 +38,8 @@ public class BallMove : MonoBehaviour
         m_LineRenderer = gameObject.GetComponentsInChildren<LineRenderer>();
 
         m_BoxCollider2D.AddRange(FindObjectsOfType<BoxCollider2D>());
+
+        AutoStartBall();
 
     }
 
@@ -49,21 +54,26 @@ public class BallMove : MonoBehaviour
 
         }
 
-        UserInputAndDrawLinePath();
-
     }
 
     private void MoveBall()
     {
 
-        m_Transform.position = Vector2.MoveTowards(m_Transform.position, moveVector, speed * Time.deltaTime);
-        
-        m_LineRenderer[0].SetPosition(0, m_Transform.position);
+        if (m_LineRenderer[1].GetPosition(0).x == m_LineRenderer[1].GetPosition(1).x && m_LineRenderer[1].GetPosition(0).y == m_LineRenderer[1].GetPosition(1).y) DopStartBall();
+        else
+        {
+
+            m_Transform.position = Vector2.MoveTowards(m_Transform.position, moveVector, speed * Time.deltaTime);
+
+            m_LineRenderer[0].SetPosition(0, m_Transform.position);
+
+        }
         
     }
     
     /// <summary>
     /// Задаём вектор движения при старте. игрок должен кликнуть мышкой в любом месте экрана.
+    /// Или, если это крайний коммит, то направление задаётся рандомно.
     /// </summary>
     /// <param name="directionRaycast">Вектор от шарика к положению курсора мышки</param>
     /// <returns></returns>
@@ -75,9 +85,10 @@ public class BallMove : MonoBehaviour
         if (hit)
         {
 
-            SearhColliderAndDisableHim();
+            Vector2 tempDir = new Vector2(m_Transform.position.x, m_Transform.position.y) - hit.point;
+            tempPoint = hit.point + (tempDir * 0.01f);
 
-            return hit.point;
+            return tempPoint;
 
         }
         else
@@ -87,7 +98,7 @@ public class BallMove : MonoBehaviour
             return Vector2.one;
 
         }
-
+        
     }
 
     /// <summary>
@@ -104,13 +115,13 @@ public class BallMove : MonoBehaviour
         {
 
             if (hit.transform.rotation.eulerAngles.z == 0) hit = Physics2D.Raycast(moveVector, -Vector2.Reflect(new Vector2(m_Transform.position.x, m_Transform.position.y) - moveVector, Vector2.up), 300, Core.instance.m_LayerMask);
-            else hit = Physics2D.Raycast(moveVector, -Vector2.Reflect(new Vector2(m_Transform.position.x, m_Transform.position.y) - moveVector, Vector2.right), 100, Core.instance.m_LayerMask);
+            else hit = Physics2D.Raycast(moveVector, -Vector2.Reflect(new Vector2(m_Transform.position.x, m_Transform.position.y) - moveVector, Vector2.right), 300, Core.instance.m_LayerMask);
 
         }
         else
         {
 
-            hit = Physics2D.Raycast(moveVector, -Vector2.Reflect(new Vector2(m_Transform.position.x, m_Transform.position.y) - moveVector, Vector2.up), 100, Core.instance.m_LayerMask);
+            hit = Physics2D.Raycast(moveVector, -Vector2.Reflect(new Vector2(m_Transform.position.x, m_Transform.position.y) - moveVector, Vector2.up), 300, Core.instance.m_LayerMask);
             if (hit.transform.rotation.eulerAngles.z != 0) hit = Physics2D.Raycast(moveVector, -Vector2.Reflect(new Vector2(m_Transform.position.x, m_Transform.position.y) - moveVector, Vector2.right), 300, Core.instance.m_LayerMask);
 
         }
@@ -118,9 +129,10 @@ public class BallMove : MonoBehaviour
         if (hit)
         {
 
-            SearhColliderAndDisableHim();
-
-            return hit.point;
+            Vector2 tempDir = new Vector2(m_Transform.position.x, m_Transform.position.y) - hit.point;
+            tempPoint = hit.point + (tempDir * 0.01f);
+            
+            return tempPoint;
 
         }
         else
@@ -156,61 +168,43 @@ public class BallMove : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Чтобы бросок лучами не приходился на тот же объект и в той же точке, к которой мы летим, то после того, как узнали точку, отключем на этом объекте коллайдер. 
-    /// А предыдущие включаем.
-    /// </summary>
-    private void SearhColliderAndDisableHim()
+    private void OnEnable()
     {
 
-        foreach (BoxCollider2D bc in m_BoxCollider2D)
-        {
+        AutoStartBall();
 
-            if (bc.gameObject == hit.transform.gameObject) bc.enabled = false;
-            else bc.enabled = true;
+    }
+    /// <summary>
+    /// Метод для автоматического старта шариков.
+    /// </summary>
+    private void AutoStartBall()
+    {
 
-        }
+        moveVector = FindOnePointToMoveBall(m_BoxCollider2D[Random.Range(0, m_BoxCollider2D.Count)].transform.position - m_Transform.position);
+        m_LineRenderer[0].SetPosition(0, m_Transform.position);
+        m_LineRenderer[0].SetPosition(1, moveVector);
+
+        nextMoveVector = FindNextPointToMoveBall();
+        m_LineRenderer[1].SetPosition(0, moveVector);
+        m_LineRenderer[1].SetPosition(1, nextMoveVector);
+
+        if (Core.instance.m_GameState == Core.GameState.WaitToClickMouse) Core.instance.ChangeGameState(Core.GameState.BallMove);
 
     }
 
     /// <summary>
-    /// Метод который следит за вводом пользователя, ищет точки и рисует линии.
-    /// Несколько блоков if - считаем и рисуем в зависимости от того какой стейт игры сейчас идёт и что жал пользователь.
+    /// fix
     /// </summary>
-    private void UserInputAndDrawLinePath()
+    private void DopStartBall()
     {
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Core.instance.m_GameState == Core.GameState.WaitToClickMouse)
-        {
+        moveVector = Vector2.up;
+        m_LineRenderer[0].SetPosition(0, m_Transform.position);
+        m_LineRenderer[0].SetPosition(1, moveVector);
 
-            Core.instance.ChangeGameState(Core.GameState.BallMove);
-
-            moveVector = FindOnePointToMoveBall(Camera.main.ScreenToWorldPoint(Input.mousePosition) - m_Transform.position);
-            m_LineRenderer[0].SetPosition(1, moveVector);
-
-            nextMoveVector = FindNextPointToMoveBall();
-            m_LineRenderer[1].SetPosition(0, moveVector);
-            m_LineRenderer[1].SetPosition(1, nextMoveVector);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.Mouse0) && Core.instance.m_GameState == Core.GameState.BallMove)
-        {
-
-            moveVector = FindOnePointToMoveBall(Camera.main.ScreenToWorldPoint(Input.mousePosition) - m_Transform.position);
-            m_LineRenderer[0].SetPosition(1, moveVector);
-
-            nextMoveVector = FindNextPointToMoveBall();
-            m_LineRenderer[1].SetPosition(0, moveVector);
-            m_LineRenderer[1].SetPosition(1, nextMoveVector);
-
-        }
-        else if (Core.instance.m_GameState == Core.GameState.WaitToClickMouse)
-        {
-
-            m_LineRenderer[1].SetPosition(0, m_Transform.position);
-            m_LineRenderer[1].SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-
-        }
+        nextMoveVector = FindNextPointToMoveBall();
+        m_LineRenderer[1].SetPosition(0, moveVector);
+        m_LineRenderer[1].SetPosition(1, nextMoveVector);
 
     }
     

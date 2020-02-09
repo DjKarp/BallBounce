@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -127,11 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659669903}
     m_Modifications:
-    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacles01 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 8438291044719650262, guid: 35309c2bad4eb1b4c8b3917588c6a075,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -187,6 +183,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacles01 (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35309c2bad4eb1b4c8b3917588c6a075, type: 3}
 --- !u!4 &10950552 stripped
@@ -202,11 +203,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659669903}
     m_Modifications:
-    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacles01 (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 8438291044719650262, guid: 35309c2bad4eb1b4c8b3917588c6a075,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -261,6 +257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacles01 (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35309c2bad4eb1b4c8b3917588c6a075, type: 3}
@@ -342,6 +343,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -455,6 +457,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -562,6 +565,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -607,7 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 367251821}
   m_Layer: 0
-  m_Name: '----- System -----'
+  m_Name: ----- System -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -701,6 +705,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -743,11 +748,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659669903}
     m_Modifications:
-    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacles01 (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 8438291044719650262, guid: 35309c2bad4eb1b4c8b3917588c6a075,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -803,6 +803,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacles01 (3)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35309c2bad4eb1b4c8b3917588c6a075, type: 3}
 --- !u!4 &439279092 stripped
@@ -821,7 +826,7 @@ GameObject:
   m_Component:
   - component: {fileID: 485651851}
   m_Layer: 0
-  m_Name: '----- PlayerAssets -----'
+  m_Name: ----- PlayerAssets -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -914,6 +919,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1104,6 +1110,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1211,6 +1218,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1253,11 +1261,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659669903}
     m_Modifications:
-    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacles01 (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 8438291044719650262, guid: 35309c2bad4eb1b4c8b3917588c6a075,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1313,6 +1316,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacles01 (4)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35309c2bad4eb1b4c8b3917588c6a075, type: 3}
 --- !u!4 &672702025 stripped
@@ -1328,11 +1336,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659669903}
     m_Modifications:
-    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacles01 (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 8438291044719650262, guid: 35309c2bad4eb1b4c8b3917588c6a075,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1388,6 +1391,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacles01 (6)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35309c2bad4eb1b4c8b3917588c6a075, type: 3}
 --- !u!4 &702751251 stripped
@@ -1442,6 +1450,9 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 768
+  isOneBall: 0
+  ballsCount: 30
+  timeToNextBallStart: 0.5
   m_GameState: 0
 --- !u!1 &764373225
 GameObject:
@@ -1453,7 +1464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 764373226}
   m_Layer: 0
-  m_Name: '----- LevelAssets -----'
+  m_Name: ----- LevelAssets -----
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1547,6 +1558,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1589,11 +1601,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659669903}
     m_Modifications:
-    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacles01 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 8438291044719650262, guid: 35309c2bad4eb1b4c8b3917588c6a075,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1649,6 +1656,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacles01 (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35309c2bad4eb1b4c8b3917588c6a075, type: 3}
 --- !u!4 &819104014 stripped
@@ -1664,11 +1676,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659669903}
     m_Modifications:
-    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacles01 (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 8438291044719650262, guid: 35309c2bad4eb1b4c8b3917588c6a075,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1723,6 +1730,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacles01 (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35309c2bad4eb1b4c8b3917588c6a075, type: 3}
@@ -1853,6 +1865,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1960,6 +1973,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2067,6 +2081,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2174,6 +2189,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2281,6 +2297,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2388,6 +2405,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2495,6 +2513,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2602,6 +2621,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2753,6 +2773,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2860,6 +2881,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2967,6 +2989,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3009,11 +3032,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 485651851}
     m_Modifications:
-    - target: {fileID: 1410878186785215039, guid: f24c2230db42f61419cdac8128ab8f0f,
-        type: 3}
-      propertyPath: m_Name
-      value: Ball
-      objectReference: {fileID: 0}
     - target: {fileID: 1410878186785215036, guid: f24c2230db42f61419cdac8128ab8f0f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3069,6 +3087,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1410878186785215039, guid: f24c2230db42f61419cdac8128ab8f0f,
+        type: 3}
+      propertyPath: m_Name
+      value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410878186785215039, guid: f24c2230db42f61419cdac8128ab8f0f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f24c2230db42f61419cdac8128ab8f0f, type: 3}
 --- !u!1001 &8438291044846692103
@@ -3078,11 +3106,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659669903}
     m_Modifications:
-    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
-        type: 3}
-      propertyPath: m_Name
-      value: Obstacles01
-      objectReference: {fileID: 0}
     - target: {fileID: 8438291044719650262, guid: 35309c2bad4eb1b4c8b3917588c6a075,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3137,6 +3160,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8438291044719650263, guid: 35309c2bad4eb1b4c8b3917588c6a075,
+        type: 3}
+      propertyPath: m_Name
+      value: Obstacles01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35309c2bad4eb1b4c8b3917588c6a075, type: 3}

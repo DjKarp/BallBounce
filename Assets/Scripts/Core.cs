@@ -5,7 +5,7 @@ using UnityEngine;
 
 /// <summary>
 /// Главный скрипт всей игры. Реализован по шаблону проектирования "Одиночка".
-/// Следит за состоянием игры
+/// Следит за состоянием игры и запускает на старте указанное количество шариков с указанным в инспекторе промежутком времени.
 /// </summary>
 public class Core : MonoBehaviour
 {
@@ -15,6 +15,22 @@ public class Core : MonoBehaviour
     [Header("Слои, с которыми шарик должен сталкиваться и отскакивать.")]
     [SerializeField]
     public LayerMask m_LayerMask;
+
+    [Header("Один шарик или много запускать?")]
+    [SerializeField]
+    public bool isOneBall = true;
+
+    [Header("Если много, то сколько именно штук?")]
+    [SerializeField]
+    public int ballsCount = 1;
+
+    [Header("Пауза между стартом шариков")]
+    [SerializeField]
+    public float timeToNextBallStart = 1.0f;
+
+    private GameObject ball;
+    private List<GameObject> ballsAll = new List<GameObject>();
+    private int activateBallNumber = 0;
 
 
     /// <summary>
@@ -43,6 +59,22 @@ public class Core : MonoBehaviour
 
         m_GameState = GameState.WaitToClickMouse;
 
+        ball = Resources.Load("Ball") as GameObject;
+        for (int i = 0; i < ballsCount; i++)
+        {
+
+            ballsAll.Add(Instantiate(ball, Vector3.zero, Quaternion.identity));
+            ballsAll[ballsAll.Count - 1].SetActive(false);
+
+        }
+
+    }
+
+    private void Start()
+    {
+
+        StartCoroutine(StartBall());
+
     }
 
     private void Update()
@@ -70,6 +102,23 @@ public class Core : MonoBehaviour
             case GameState.WaitToClickMouse:
 
                 break;
+
+        }
+
+    }
+    
+    public IEnumerator StartBall()
+    {
+
+        while(activateBallNumber < ballsAll.Count)
+        {
+
+            yield return new WaitForSeconds(timeToNextBallStart);
+
+            ballsAll[activateBallNumber].SetActive(true);
+            activateBallNumber++;
+
+            yield return null;
 
         }
 
